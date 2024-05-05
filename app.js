@@ -17,7 +17,7 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
+    origin: [ process.env.FRONTEND_URL , "http://localhost:3000" ] ,
     credentials: true,
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,7 +32,7 @@ app.use("/api/v1",order);
 app.use("/api/v1",payment);
 
 
-app.get("/api/getkey", (req, res) =>
+app.get("/api/v1/getkey", (req, res) =>
   res.status(200).json({ key: process.env.RAZORPAY_KEY_ID })
 );
   
